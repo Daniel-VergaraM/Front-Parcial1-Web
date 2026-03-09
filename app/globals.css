@@ -1,8 +1,19 @@
 @import "tailwindcss";
 
+/* Variables de color para tema claro */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+}
+
+/* Variables de color para tema oscuro */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ededed;
+  --card-bg: #2d2d2d;
+  --card-border: #404040;
 }
 
 @theme inline {
@@ -12,15 +23,131 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilos para tarjetas y contenedores en modo oscuro */
+.dark .bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+.dark .border {
+  border-color: var(--card-border);
+}
+
+/* Textos en modo oscuro */
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: #e5e7eb !important;
+}
+
+/* Inputs y formularios en modo oscuro */
+.dark input,
+.dark textarea {
+  background-color: #1f1f1f;
+  color: #ededed;
+  border-color: #404040;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* H1 & H8: Animaciones sutiles para feedback visual */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* H8: Diseño minimalista - Estados de enfoque mejorados */
+*:focus-visible {
+  outline: 2px solid #6E8898;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.dark *:focus-visible {
+  outline-color: #9FB1BC;
+}
+
+/* H6: Reconocer antes que recordar - Mejora visual para campos requeridos */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+  border-color: #DB8A74;
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border-color: #6E8898;
+}
+
+.dark input:invalid:not(:placeholder-shown),
+.dark textarea:invalid:not(:placeholder-shown) {
+  border-color: #e07856;
+}
+
+.dark input:valid:not(:placeholder-shown),
+.dark textarea:valid:not(:placeholder-shown) {
+  border-color: #9FB1BC;
+}
+
+/* H8: Diseño estético - Transiciones suaves */
+button,
+a,
+input,
+textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Mejora para hover en tarjetas */
+article:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* H1: Loading spinner personalizado */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
 }
