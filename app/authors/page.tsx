@@ -49,7 +49,7 @@ export default function AuthorsPage() {
         setLoading(true);
         await deleteAuthor(id);
         // H9: Mensajes de error claros y constructivos
-        setSuccessMessage(`✓ Autor "${name}" eliminado exitosamente`);
+        setSuccessMessage(`Autor "${name}" eliminado exitosamente`);
         setTimeout(() => setSuccessMessage(null), 5000);
       } catch (err) {
         setError(
@@ -140,12 +140,12 @@ export default function AuthorsPage() {
               htmlFor="search"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              🔍 Buscar autor
+              Buscar autor
             </label>
             <input
               type="search"
               id="search"
-              placeholder="Buscar por nombre o descripción..."
+              placeholder="Buscar por nombre"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full px-4 py-2 border border-[#9FB1BC] rounded-lg focus:ring-2 focus:ring-[#6E8898] focus:border-transparent"
@@ -172,7 +172,7 @@ export default function AuthorsPage() {
         </div>
 
         <p className="text-gray-600" aria-describedby="page-title">
-          📊 Total: {authors.length} autor{authors.length !== 1 ? "es" : ""}
+          Total: {authors.length} autor{authors.length !== 1 ? "es" : ""}
         </p>
       </div>
 

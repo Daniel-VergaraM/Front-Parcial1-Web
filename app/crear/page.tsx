@@ -202,7 +202,7 @@ export default function CreateAuthorPage() {
 
       <div className="mb-6">
         <h1 className="text-4xl font-bold mb-2" id="form-title">
-          ➕ Crear Nuevo Autor
+          Crear nuevo Autor
         </h1>
         {/* H10: Ayuda y documentación */}
         <p className="text-[#6E8898]">
@@ -262,6 +262,7 @@ export default function CreateAuthorPage() {
             )}
             {errors.name && (
               <p
+                data-testid="name-error"
                 id="name-error"
                 className="text-[#DB8A74] text-sm"
                 role="alert"
@@ -312,6 +313,7 @@ export default function CreateAuthorPage() {
           )}
           {errors.birthDate && (
             <p
+              data-testid="birthDate-error"
               id="birthDate-error"
               className="text-[#DB8A74] text-sm mt-1"
               role="alert"
@@ -372,6 +374,7 @@ export default function CreateAuthorPage() {
           )}
           {errors.image && (
             <p
+              data-testid="image-error"
               id="image-error"
               className="text-[#DB8A74] text-sm mt-1"
               role="alert"
@@ -387,7 +390,7 @@ export default function CreateAuthorPage() {
             htmlFor="description"
             className="block text-[#2E5266] font-medium mb-2"
           >
-            📜 Descripción / Biografía{" "}
+            Descripción / Biografía{" "}
             <span className="text-[#DB8A74]" aria-label="obligatorio">
               *
             </span>
@@ -421,6 +424,7 @@ export default function CreateAuthorPage() {
             )}
             {errors.description && (
               <p
+                data-testid="description-error"
                 id="description-error"
                 className="text-[#DB8A74] text-sm"
                 role="alert"
@@ -434,13 +438,14 @@ export default function CreateAuthorPage() {
         {/* Botones */}
         <div className="flex gap-4">
           <button
+            data-testid="submit-button"
             type="submit"
             disabled={isSubmitting}
             className="flex-1 bg-[#2E5266] text-white px-6 py-3 rounded-lg hover:bg-[#6E8898] 
               transition-colors disabled:bg-[#9FB1BC] disabled:cursor-not-allowed focus:ring-2 focus:ring-[#6E8898] font-medium"
             aria-busy={isSubmitting}
           >
-            {isSubmitting ? "⏳ Creando autor..." : "✓ Crear Autor"}
+            {isSubmitting ? "Creando autor..." : "Crear Autor"}
           </button>
           <button
             type="button"
